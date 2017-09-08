@@ -1,40 +1,92 @@
 ﻿Feature: ToDoMvcFeature
+	In order to create and view Active/Completed/All tasks in the ToDoMvc AngularJSpage
+	As a user
+	I want to ensure the ToDOMVc page elements and task lists are displayed correctly
 
 
-@All_List
-Scenario Outline:Verify All List
+@All_Lists
+Scenario:Verify All Lists
 Given I am on the ToDoMvc AngularJS Page
-When I Click on the All 
-Then all<Tasks> are displayed
-
-Examples:
+When I Enter New tasks
 | Tasks      |
-| automation |
+| Automation |
+| Atlas      |
+And I click on the checkbox of one of the tasks
+And I Click on the All 
+Then all entered tasks are displayed
+
+@Clear_Completed_Task
+Scenario:Verify Clear Complete Tasks
+Given I am on the ToDoMvc AngularJS Page
+When I Enter New tasks
+| Tasks               |
+| Betradar            |
+| Sporting Solutions  |
+And I click on Checkbox of 'Betradar' one of Acive tasks
+And I Click on the Complete 
+And click on Checkbox of 'Betradar'one of the Completed tasks
+And I Click on the ClearCompleted
+And I Click on the All 
+Then only 'Sporting Solutions' is Displayed  in
+
+
+@Completed_List
+Scenario:Verify Completed Lists
+Given I am on the ToDoMvc AngularJS Page
+When I Enter New tasks
+| Tasks      |
 | US Racing  |
-| Specflow   |
-| Atlas      | 
+| Specflow   | 
+And I click on the checkbox of one of the tasks
+And I Click on the Complete 
+Then all entered tasks are displayed
+
+@Active_List
+Scenario:Verify Active Lists
+Given I am on the ToDoMvc AngularJS Page
+When I Enter New tasks
+| Tasks              |
+| 30 days Challenge  |
+| Unit Tests         | 
+And I Click on the Active 
+Then all entered tasks are displayed
+
+@New_Task
+Scenario:Verify New Tasks
+Given I am on the ToDoMvc AngularJS Page
+When I Enter New tasks
+| Tasks             |
+| SIS Greyhounds    |
+| SIS Throughbreds  | 
+Then all entered tasks are displayed
+
 
 @Completed_List
 Scenario Outline:Verify Completed List
 Given I am on the ToDoMvc AngularJS Page
-When I Click on the Completed 
-Then completed<Tasks> are displayed
+When I Enter a New <Task>
+And I press Enter
+And I click on Checkbox of Acive <Task>
+And I Click on the Complete 
+Then the <Task> is displayed on the Completed List
 
 Examples:
-| Tasks      |
+| Task       |
 | US Racing  |
 | Specflow   | 
 
 @Active_List
 Scenario Outline:Verify Active List
 Given I am on the ToDoMvc AngularJS Page
-When I Click on the Active 
-Then active<Tasks> are displayed
+When I Enter a New <Task>
+And I press Enter
+And I Click on the Active 
+Then active<Task> are displayed
 
 Examples:
-| Tasks      |
-| US Racing  |
-| Specflow   | 
+| Task               |
+| 30 days Challenge  |
+| Unit Tests         | 
 
 
 @New_Task
@@ -45,17 +97,35 @@ And I press Enter
 Then the new <Task> is populated on the List
 	
 Examples:
-| Task             |
-| 30days Challenge |
+| Task              |
+| 30 days Challenge |
 
 @Complete_Task
 Scenario Outline: Verify Complete Task
 Given I am on the ToDoMvc AngularJS Page
-When I Click on Active
-And I click on Acive <Task>
-Then the <Task> is dissapeared from the Active List
+When I Enter a New <Task>
+And I press Enter
+And I click on Checkbox of Acive <Task>
+And I Click on the Complete 
+Then the <Task> is displayed on the Completed List
 
 Examples:
 | Task       |
 | Unit Tests |
 
+@Clear_Completed_Task
+Scenario Outline:Verify Clear Complete Task
+Given I am on the ToDoMvc AngularJS Page
+When I Enter a New <Task1>
+And I press Enter
+And I Enter a New <Task2>
+And I press Enter
+And I click on Checkbox of Acive <Task1>
+And I Click on the Complete 
+And click on Completed <Task1>
+Then only <Task2> is Displayed
+And <Task1> is not Displayed
+
+Examples:
+| Task1   | Task2     |
+| Meetups | Challenge |
