@@ -5,6 +5,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using TechTalk.SpecFlow;
@@ -16,9 +17,23 @@ namespace _30DaysAutomationChallenge.StepDefinitions
     public sealed class FeatureStepDefinition
     {
         //private static IWebDriver driver = ScenarioContext.Current.Get<IWebDriver>();
-        public static IWebDriver driver = Helpers.Drivers.GetDriver();
+        public static string browserName = ConfigurationManager.AppSettings["browser"];
+        //public Drivers dr = new Drivers();
 
+        // public IWebDriver driver = new IWebDriver();
+        static IWebDriver driver = Drivers.GetDriver(browserName);
+        //dr.GetDriver(browserName);
+        //drivers=dr
+        //driver= drGetDriver(browserName);
+        public IEnumerable<Task> listOfTasks;
+        public Task task;
+        //public Task[] =null;
+        public FeatureStepDefinition(Task task)
+        {
+            this.task= task;
+        }
 
+    
         ToDoMvcPage toDoMvcPage = new ToDoMvcPage(driver);
 
 
@@ -68,22 +83,82 @@ namespace _30DaysAutomationChallenge.StepDefinitions
             toDoMvcPage.CreateTask(Task);
         }
 
+        //[When(@"I Enter New tasks")]
+        //public void WhenIEnterNewTasks(Table table)
+        //{
+
+        //    var listOfTasks = table.CreateSet<Task>();
+        //    ScenarioContext.Current.Set(listOfTasks);
+
+        //    foreach (var tsk in listOfTasks)
+        //    {
+        //        toDoMvcPage.CreateTask(tsk.Tasks.ToString());
+        //        toDoMvcPage.enter();
+
+        //    }
+
+
+        //}
+
         [When(@"I Enter New tasks")]
         public void WhenIEnterNewTasks(Table table)
         {
 
-            var listOfTasks = table.CreateSet<Task>();
-            ScenarioContext.Current.Set(listOfTasks);
+            listOfTasks = table.CreateSet<Task>();
+            //ScenarioContext.Current.Set(listOfTasks);
 
+            //foreach (var tsk in listOfTasks)
+            //{
+            //    //Task.
+            //    task.Tasks = tsk.ToString();
+            //    toDoMvcPage.CreateTask(tsk.ToString());
+            //    toDoMvcPage.enter();
+
+            //}
             foreach (var tsk in listOfTasks)
             {
+
+                task = tsk;
                 toDoMvcPage.CreateTask(tsk.Tasks.ToString());
                 toDoMvcPage.enter();
 
             }
 
+            //foreach (var tk in table.CreateSet<Task>())
+            //{
+            //    task.Tasks = tk.Tasks.ToString();
+            //    toDoMvcPage.CreateTask(task.Tasks.ToString());
+            //    toDoMvcPage.enter();
+            //}
+            //foreach (var tk in table.CreateSet<Task>())
+            //{
+            //    task = ;
+            //    toDoMvcPage.CreateTask(task.Tasks.ToString());
+            //    toDoMvcPage.enter();
+            //}
+
 
         }
+
+        //[Then(@"all entered tasks are displayed")]
+        //public void ThenAllEnteredTasksAreDisplayed(Table table)
+        //{
+            
+        //    try
+        //    {
+        //        foreach (var tsk in table.CompareToSet<Task>())
+        //        {
+        //            string taskList = toDoMvcPage.GetTask(tsk.ToString());
+        //            Assert.AreEqual(task.Tasks.ToString(), taskList);
+        //        }
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Reports.ToDoMvcReport.test.Fail("Test Failed " + ex);
+        //    }
+        //}
+
 
         [Then(@"active(.*) are displayed")]
         public void ThenActiveAreDisplayed(string task)
@@ -108,25 +183,47 @@ namespace _30DaysAutomationChallenge.StepDefinitions
 
         }
 
+        //[Then(@"all entered tasks are displayed")]
+        //public void ThenAllEnteredTasksAreDisplayed()
+        //{
+
+        //    var tskList = ScenarioContext.Current.Get<IEnumerable<Task>>();
+        //    try
+        //    {
+        //        foreach (var tsk in tskList)
+        //        {
+        //            string task = toDoMvcPage.GetTask(tsk.Tasks);
+        //            Assert.AreEqual(tsk.Tasks, task);
+
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Reports.ToDoMvcReport.test.Fail("Test Failed " + ex);
+        //    }
+        //}
+
         [Then(@"all entered tasks are displayed")]
         public void ThenAllEnteredTasksAreDisplayed()
         {
+           // var listOfTasks = 
+          
 
-            var tskList = ScenarioContext.Current.Get<IEnumerable<Task>>();
             try
             {
-                foreach (var tsk in tskList)
+                foreach (var tsk in listOfTasks)
                 {
-                    string task = toDoMvcPage.GetTask(tsk.Tasks);
-                    Assert.AreEqual(tsk.Tasks, task);
-
+                    string taskList = toDoMvcPage.GetTask(tsk.Tasks.ToString());
+                    //Assert.AreEqual(task.Tasks.ToString(), taskList);
+                    Assert.AreEqual(tsk.Tasks.ToString(), taskList);
                 }
+
             }
             catch (Exception ex)
             {
                 Reports.ToDoMvcReport.test.Fail("Test Failed " + ex);
             }
-            }
+        }
 
 
         [When(@"I click on Checkbox of Acive (.*)")]

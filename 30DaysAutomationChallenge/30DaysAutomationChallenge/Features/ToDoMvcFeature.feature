@@ -3,7 +3,8 @@
 	As a user
 	I want to ensure the ToDOMVc page elements and task lists are displayed correctly
 
-
+@Browser:Chrome
+@Browser:Firefox
 @All_Lists
 Scenario:Verify All Lists
 Given I am on the ToDoMvc AngularJS Page
@@ -41,7 +42,9 @@ And I click on the checkbox of one of the tasks
 And I Click on the Complete 
 Then all entered tasks are displayed
 
-@Active_List
+@Browser_Chrome
+#@Browser_Firefox
+#@Active_List
 Scenario:Verify Active Lists
 Given I am on the ToDoMvc AngularJS Page
 When I Enter New tasks
@@ -51,7 +54,9 @@ When I Enter New tasks
 And I Click on the Active 
 Then all entered tasks are displayed
 
-@New_Task
+@Browser_Chrome
+#@Browser_Firefox
+#@New_Task
 Scenario:Verify New Tasks
 Given I am on the ToDoMvc AngularJS Page
 When I Enter New tasks
@@ -59,6 +64,20 @@ When I Enter New tasks
 | SIS Greyhounds    |
 | SIS Throughbreds  | 
 Then all entered tasks are displayed
+
+#@Browser_Chrome
+#@Browser_Firefox
+##@New_Task
+#Scenario:Verify New Tasks
+#Given I am on the ToDoMvc AngularJS Page
+#When I Enter New tasks
+#| Tasks             |
+#| SIS Greyhounds    |
+#| SIS Throughbreds  | 
+#Then all entered tasks are displayed
+#| Tasks             |
+#| SIS Greyhounds    |
+#| SIS Throughbreds  |
 
 
 @Completed_List

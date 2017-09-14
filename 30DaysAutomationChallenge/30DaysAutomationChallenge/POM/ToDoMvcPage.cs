@@ -62,10 +62,19 @@ namespace _30DaysAutomationChallenge.POM
             {
                 driver.Navigate().GoToUrl(Constants.GlobalConstants.ToDOMvcHomePage);
             }
+            catch (ElementNotVisibleException ex)
+            {
+                Reports.ToDoMvcReport.test.Fail("Unable to open ToDoMvc Page " + ex);
+                string file = Helpers.Screenshots.TakeScreenshot(driver);
+                Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
+                throw ex;
+            }
             catch (Exception ex)
             {
                 Reports.ToDoMvcReport.test.Fail("Unable to open ToDoMvc Page " + ex);
-                Helpers.Screenshots.TakeScreenshot(driver);
+                string file=Helpers.Screenshots.TakeScreenshot(driver);
+                //Reports.ToDoMvcReport.test.Error("Error" + MediaEntityBuilder.CreateScreenCaptureFromPath(Helpers.Screenshots.TakeScreenshot(driver)).Build());
+                Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
                 throw ex;
             }
         }
@@ -84,10 +93,19 @@ namespace _30DaysAutomationChallenge.POM
                     CheckboxList.ElementAt(i).Clear();
                 }
             }
+            catch (ElementNotVisibleException ex)
+            {
+                Reports.ToDoMvcReport.test.Fail("Unable to Find the ClearAll Button " + ex);
+                string file = Helpers.Screenshots.TakeScreenshot(driver);
+                Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
+                throw ex;
+            }
             catch (Exception ex)
             {
                 Reports.ToDoMvcReport.test.Fail("Unable to Find the ClearAll Button " + ex);
-                Helpers.Screenshots.TakeScreenshot(driver);
+                string file=Helpers.Screenshots.TakeScreenshot(driver);
+                //Reports.ToDoMvcReport.test.Error("Error" + MediaEntityBuilder.CreateScreenCaptureFromPath(Helpers.Screenshots.TakeScreenshot(driver)).Build());
+                Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
                 throw ex;
             }
         }
@@ -104,10 +122,19 @@ namespace _30DaysAutomationChallenge.POM
             {
                 ClearCompleted.Click();
             }
-            catch(Exception ex)
+            catch (ElementNotVisibleException ex)
             {
                 Reports.ToDoMvcReport.test.Fail("Unable to Find the ClearAll Button " + ex);
-                Helpers.Screenshots.TakeScreenshot(driver);
+                string file = Helpers.Screenshots.TakeScreenshot(driver);
+                Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                Reports.ToDoMvcReport.test.Fail("Unable to Find the ClearAll Button " + ex);
+                string file=Helpers.Screenshots.TakeScreenshot(driver);
+                //Reports.ToDoMvcReport.test.Error("Error" + MediaEntityBuilder.CreateScreenCaptureFromPath(Helpers.Screenshots.TakeScreenshot(driver)).Build());
+                Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
                 throw ex;
             }
         }
@@ -122,7 +149,9 @@ namespace _30DaysAutomationChallenge.POM
             catch (Exception ex)
             {
                 Reports.ToDoMvcReport.test.Fail("Unable to Find the Complete Button " + ex);
-                Helpers.Screenshots.TakeScreenshot(driver);
+                string file=Helpers.Screenshots.TakeScreenshot(driver);
+                //Reports.ToDoMvcReport.test.Error("Error" + MediaEntityBuilder.CreateScreenCaptureFromPath(Helpers.Screenshots.TakeScreenshot(driver)).Build());
+                Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
                 throw ex;
             }
         }
@@ -133,10 +162,18 @@ namespace _30DaysAutomationChallenge.POM
             {
                 Active.Click();
             }
+            catch (ElementNotVisibleException ex)
+            {
+                Reports.ToDoMvcReport.test.Fail("Unable to Find/click the Active Button  " + ex);
+                Helpers.Screenshots.TakeScreenshot(driver);
+                Reports.ToDoMvcReport.test.Error("Error" + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(Helpers.Screenshots.TakeScreenshot(driver)).Build());
+                throw ex;
+            }
             catch (Exception ex)
             {
                 Reports.ToDoMvcReport.test.Fail("Unable to Find/click the Active Button  " + ex);
                 Helpers.Screenshots.TakeScreenshot(driver);
+                Reports.ToDoMvcReport.test.Error("Error" + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(Helpers.Screenshots.TakeScreenshot(driver)).Build());
                 throw ex;
             }
         }
@@ -149,10 +186,18 @@ namespace _30DaysAutomationChallenge.POM
             {
                 NewToDoXPath.SendKeys(newTask);
             }
+            catch (ElementNotVisibleException ex)
+            {
+                Reports.ToDoMvcReport.test.Fail("Unable to Find the Textbox " + ex);
+                string file = Helpers.Screenshots.TakeScreenshot(driver);
+                Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
+                throw ex;
+            }
             catch (Exception ex)
             {
                 Reports.ToDoMvcReport.test.Fail("Unable to Find the Textbox " + ex);
-                Helpers.Screenshots.TakeScreenshot(driver);
+                string file=Helpers.Screenshots.TakeScreenshot(driver);
+                Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
                 throw ex;
             }
             return this;
@@ -186,10 +231,19 @@ namespace _30DaysAutomationChallenge.POM
                     }
                 }
             }
+            catch (ElementNotVisibleException ex)
+            {
+                Reports.ToDoMvcReport.test.Fail("Unable to Find the Task " + ex);
+                string file = Helpers.Screenshots.TakeScreenshot(driver);
+                Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
+                throw ex;
+            }
             catch (Exception ex)
             {
                 Reports.ToDoMvcReport.test.Fail("Unable to Find the Task " + ex);
-                Helpers.Screenshots.TakeScreenshot(driver);
+                string file=Helpers.Screenshots.TakeScreenshot(driver);
+                //Reports.ToDoMvcReport.test.Error("Error " + MediaEntityBuilder.CreateScreenCaptureFromPath(Helpers.Screenshots.TakeScreenshot(driver)).Build());
+                Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
                 throw ex;
             }
                 
@@ -217,10 +271,18 @@ namespace _30DaysAutomationChallenge.POM
                 NewToDoXPath.SendKeys(Keys.Enter);
                 //Reports.ToDoMvcReport.test.Pass("Element Found");
             }
+            catch (ElementNotVisibleException ex)
+            {
+                Reports.ToDoMvcReport.test.Fail("Unable to Find the Textbox " + ex);
+                string file = Helpers.Screenshots.TakeScreenshot(driver);
+                Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
+            }
             catch (Exception ex)
             {
                 Reports.ToDoMvcReport.test.Fail("Unable to Find the Textbox " + ex);
-                Helpers.Screenshots.TakeScreenshot(driver);
+                string file=Helpers.Screenshots.TakeScreenshot(driver);
+                //Reports.ToDoMvcReport.test.Error("Error" + MediaEntityBuilder.CreateScreenCaptureFromPath(Helpers.Screenshots.TakeScreenshot(driver)).Build());
+                Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
             }
 
         }
@@ -251,12 +313,19 @@ namespace _30DaysAutomationChallenge.POM
                 }
                 Reports.ToDoMvcReport.test.Pass("Element Found");
             }
-            catch(Exception ex)
+            catch (ElementNotVisibleException ex)
             {
-                Console.WriteLine("Unable to find elements "+ex );
+                
+                Reports.ToDoMvcReport.test.Fail("Unable to Find the Element " + ex);
+                string file = Helpers.Screenshots.TakeScreenshot(driver);
+                Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
+            }
+            catch (Exception ex)
+            {
+                
                 Reports.ToDoMvcReport.test.Fail("Unable to Find the Element " +ex);
-                Helpers.Screenshots.TakeScreenshot(driver);
-                //Reports.ToDoMvcReport.test.Error("Error" + MediaEntityBuilder.CreateScreenCaptureFromPath(Helpers.Screenshots.TakeScreenshot(driver)).Build());
+                string file=Helpers.Screenshots.TakeScreenshot(driver);
+                Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
             }
 
         }
@@ -299,12 +368,18 @@ namespace _30DaysAutomationChallenge.POM
                 }
                 Reports.ToDoMvcReport.test.Pass("Element Found");
             }
+            catch (ElementNotVisibleException ex)
+            {
+                Reports.ToDoMvcReport.test.Fail("Unable to Find the Element " + ex);
+                string file = Helpers.Screenshots.TakeScreenshot(driver);
+                Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
+            }
             catch (Exception ex)
             {
                 Console.WriteLine("Unable to find elements " + ex);
                 Reports.ToDoMvcReport.test.Fail("Unable to Find the Element " + ex);
-                Helpers.Screenshots.TakeScreenshot(driver);
-                //Reports.ToDoMvcReport.test.Error("Error" + MediaEntityBuilder.CreateScreenCaptureFromPath(Helpers.Screenshots.TakeScreenshot(driver)).Build());
+                string file=Helpers.Screenshots.TakeScreenshot(driver);
+                Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
             }
 
         }
@@ -336,13 +411,19 @@ namespace _30DaysAutomationChallenge.POM
                 }
                 Reports.ToDoMvcReport.test.Pass("Element Found");
             }
+            catch (ElementNotVisibleException ex)
+            {
+                Reports.ToDoMvcReport.test.Fail("Unable to Find the Element " + ex);
+                string file = Helpers.Screenshots.TakeScreenshot(driver);
+                Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
+            }
 
             catch (Exception ex)
             {
                 Console.WriteLine("Unable to find elements " + ex);
                 Reports.ToDoMvcReport.test.Fail("Unable to Find the Element "+ex);
-                Helpers.Screenshots.TakeScreenshot(driver);
-                //Reports.ToDoMvcReport.test.Error("Error "+ex + MediaEntityBuilder.CreateScreenCaptureFromPath(Helpers.Screenshots.TakeScreenshot(driver)).Build());
+                string file=Helpers.Screenshots.TakeScreenshot(driver);
+                Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
             }
             
         }
@@ -382,12 +463,19 @@ namespace _30DaysAutomationChallenge.POM
                 }
                 Reports.ToDoMvcReport.test.Pass("Element Found");
             }
+            catch (ElementNotVisibleException ex)
+            {
+                Reports.ToDoMvcReport.test.Fail("Unable to Find the Element " + ex);
+                string file = Helpers.Screenshots.TakeScreenshot(driver);
+                Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
+            }
 
             catch (Exception ex)
             {
                 Reports.ToDoMvcReport.test.Fail("Unable to Find the Element " + ex);
-                Helpers.Screenshots.TakeScreenshot(driver);
-                //Reports.ToDoMvcReport.test.Error("Error "+ex + MediaEntityBuilder.CreateScreenCaptureFromPath(Helpers.Screenshots.TakeScreenshot(driver)).Build());
+                string file = Helpers.Screenshots.TakeScreenshot(driver);
+                Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
+                //Reports.ToDoMvcReport.test.Log
             }
 
         }

@@ -10,5 +10,12 @@ namespace _30DaysAutomationChallenge.StepDefinitions
     public class Task
     {
         public string Tasks { get; set; }
+        //public IEnumerable<string> Tasks { get; set; }
+
+        //public Task()
+        //{
+        //    tasks = new TaskList();
+        //}
+
     }
 }
