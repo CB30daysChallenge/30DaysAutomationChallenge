@@ -1,5 +1,6 @@
 ﻿//using System;
 //using System.Collections.Generic;
+//using System.Diagnostics;
 //using System.Linq;
 //using System.Text;
 //using System.Threading.Tasks;
@@ -12,13 +13,15 @@
 //        public static string LastGherkinMessage;
 //        public void WriteTestOutput(string message)
 //        {
-            
+
 //            LastGherkinMessage = message;
 //            Console.WriteLine(message);
+//            EventLog.WriteEntry("mysource", "output: " + message);
 //        }
 //        public void WriteToolOutput(string message)
 //        {
 //            Console.WriteLine(message);
+//            EventLog.WriteEntry("mysource", "specflow: " + message);
 //        }
 //    }
 //}

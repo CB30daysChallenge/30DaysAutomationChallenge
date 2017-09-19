@@ -87,7 +87,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="TechTalk.SpecRun, Version=1.6.1.0, Culture=neutral, PublicKeyToken=d0fc5cc18b3b389b, processorArchitecture=MSIL">
-      <HintPath>..\packages\SpecRun.SpecFlow.2-2-0.1.6.1\lib\net45\TechTalk.SpecRun.dll</HintPath>
+      <HintPath>..\packages\SpecRun.NUnit.1.6.1\lib\net40\TechTalk.SpecRun.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="TechTalk.SpecRun.Common, Version=1.6.1.0, Culture=neutral, PublicKeyToken=d0fc5cc18b3b389b, processorArchitecture=MSIL">
@@ -159,6 +159,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LogTraceListener.SpecFlowPlugin\LogTraceListener.SpecFlowPlugin.csproj">
+      <Project>{892b5a16-ff7d-49b5-a4bc-387bd70b3006}</Project>
+      <Name>LogTraceListener.SpecFlowPlugin</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -99,14 +99,18 @@ testRunner.Then("all entered tasks are displayed", ((string)(null)), ((TechTalk.
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("Verify Clear Complete Tasks", new string[] {
-                "Clear_Completed_Task"}, SourceLine=19)]
+                "Browser:Chrome",
+                "Browser:Firefox",
+                "Clear_Completed_Task"}, SourceLine=21)]
         public virtual void VerifyClearCompleteTasks()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify Clear Complete Tasks", new string[] {
+                        "Browser:Chrome",
+                        "Browser:Firefox",
                         "Clear_Completed_Task"});
-#line 20
+#line 22
 this.ScenarioSetup(scenarioInfo);
-#line 21
+#line 23
 testRunner.Given("I am on the ToDoMvc AngularJS Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -115,33 +119,37 @@ testRunner.Given("I am on the ToDoMvc AngularJS Page", ((string)(null)), ((TechT
                         "Betradar"});
             table2.AddRow(new string[] {
                         "Sporting Solutions"});
-#line 22
+#line 24
 testRunner.When("I Enter New tasks", ((string)(null)), table2, "When ");
-#line 26
-testRunner.And("I click on Checkbox of \'Betradar\' one of Acive tasks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 27
-testRunner.And("I Click on the Complete", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 28
-testRunner.And("click on Checkbox of \'Betradar\'one of the Completed tasks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("I click on Checkbox of \'Betradar\' one of Acive tasks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 29
-testRunner.And("I Click on the ClearCompleted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("I Click on the Complete", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 30
-testRunner.And("I Click on the All", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("click on Checkbox of \'Betradar\'one of the Completed tasks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 31
+testRunner.And("I Click on the ClearCompleted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 32
+testRunner.And("I Click on the All", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 33
 testRunner.Then("only \'Sporting Solutions\' is Displayed  in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("Verify Completed Lists", new string[] {
-                "Completed_List"}, SourceLine=34)]
+                "Browser_Chrome",
+                "Browser_Firefox",
+                "Completed_List"}, SourceLine=37)]
         public virtual void VerifyCompletedLists()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify Completed Lists", new string[] {
+                        "Browser_Chrome",
+                        "Browser_Firefox",
                         "Completed_List"});
-#line 35
+#line 38
 this.ScenarioSetup(scenarioInfo);
-#line 36
+#line 39
 testRunner.Given("I am on the ToDoMvc AngularJS Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -150,27 +158,31 @@ testRunner.Given("I am on the ToDoMvc AngularJS Page", ((string)(null)), ((TechT
                         "US Racing"});
             table3.AddRow(new string[] {
                         "Specflow"});
-#line 37
+#line 40
 testRunner.When("I Enter New tasks", ((string)(null)), table3, "When ");
-#line 41
+#line 44
 testRunner.And("I click on the checkbox of one of the tasks", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 42
+#line 45
 testRunner.And("I Click on the Complete", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 43
+#line 46
 testRunner.Then("all entered tasks are displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("Verify Active Lists", new string[] {
-                "Browser_Chrome"}, SourceLine=47)]
+                "Browser_Chrome",
+                "Browser_Firefox",
+                "Active_List"}, SourceLine=50)]
         public virtual void VerifyActiveLists()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify Active Lists", new string[] {
-                        "Browser_Chrome"});
-#line 48
+                        "Browser_Chrome",
+                        "Browser_Firefox",
+                        "Active_List"});
+#line 51
 this.ScenarioSetup(scenarioInfo);
-#line 49
+#line 52
 testRunner.Given("I am on the ToDoMvc AngularJS Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -179,25 +191,29 @@ testRunner.Given("I am on the ToDoMvc AngularJS Page", ((string)(null)), ((TechT
                         "30 days Challenge"});
             table4.AddRow(new string[] {
                         "Unit Tests"});
-#line 50
+#line 53
 testRunner.When("I Enter New tasks", ((string)(null)), table4, "When ");
-#line 54
+#line 57
 testRunner.And("I Click on the Active", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 55
+#line 58
 testRunner.Then("all entered tasks are displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("Verify New Tasks", new string[] {
-                "Browser_Chrome"}, SourceLine=59)]
+                "Browser_Chrome",
+                "Browser_Firefox",
+                "New_Task"}, SourceLine=62)]
         public virtual void VerifyNewTasks()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify New Tasks", new string[] {
-                        "Browser_Chrome"});
-#line 60
+                        "Browser_Chrome",
+                        "Browser_Firefox",
+                        "New_Task"});
+#line 63
 this.ScenarioSetup(scenarioInfo);
-#line 61
+#line 64
 testRunner.Given("I am on the ToDoMvc AngularJS Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -206,9 +222,9 @@ testRunner.Given("I am on the ToDoMvc AngularJS Page", ((string)(null)), ((TechT
                         "SIS Greyhounds"});
             table5.AddRow(new string[] {
                         "SIS Throughbreds"});
-#line 62
+#line 65
 testRunner.When("I Enter New tasks", ((string)(null)), table5, "When ");
-#line 66
+#line 69
 testRunner.Then("all entered tasks are displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -223,38 +239,38 @@ testRunner.Then("all entered tasks are displayed", ((string)(null)), ((TechTalk.
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify Completed List", @__tags);
-#line 84
-this.ScenarioSetup(scenarioInfo);
-#line 85
-testRunner.Given("I am on the ToDoMvc AngularJS Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 86
-testRunner.When(string.Format("I Enter a New {0}", task), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 87
-testRunner.And("I press Enter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 88
-testRunner.And(string.Format("I click on Checkbox of Acive {0}", task), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.Given("I am on the ToDoMvc AngularJS Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 89
-testRunner.And("I Click on the Complete", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.When(string.Format("I Enter a New {0}", task), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 90
+testRunner.And("I press Enter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 91
+testRunner.And(string.Format("I click on Checkbox of Acive {0}", task), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 92
+testRunner.And("I Click on the Complete", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 93
 testRunner.Then(string.Format("the {0} is displayed on the Completed List", task), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("Verify Completed List, US Racing", new string[] {
-                "Completed_List"}, SourceLine=93)]
+                "Completed_List"}, SourceLine=96)]
         public virtual void VerifyCompletedList_USRacing()
         {
-#line 84
+#line 87
 this.VerifyCompletedList("US Racing", ((string[])(null)));
 #line hidden
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("Verify Completed List, Specflow", new string[] {
-                "Completed_List"}, SourceLine=93)]
+                "Completed_List"}, SourceLine=96)]
         public virtual void VerifyCompletedList_Specflow()
         {
-#line 84
+#line 87
 this.VerifyCompletedList("Specflow", ((string[])(null)));
 #line hidden
         }
@@ -268,36 +284,36 @@ this.VerifyCompletedList("Specflow", ((string[])(null)));
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify Active List", @__tags);
-#line 98
-this.ScenarioSetup(scenarioInfo);
-#line 99
-testRunner.Given("I am on the ToDoMvc AngularJS Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 100
-testRunner.When(string.Format("I Enter a New {0}", task), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 101
-testRunner.And("I press Enter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 102
-testRunner.And("I Click on the Active", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.Given("I am on the ToDoMvc AngularJS Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 103
+testRunner.When(string.Format("I Enter a New {0}", task), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 104
+testRunner.And("I press Enter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 105
+testRunner.And("I Click on the Active", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 106
 testRunner.Then(string.Format("active{0} are displayed", task), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("Verify Active List, 30 days Challenge", new string[] {
-                "Active_List"}, SourceLine=106)]
+                "Active_List"}, SourceLine=109)]
         public virtual void VerifyActiveList_30DaysChallenge()
         {
-#line 98
+#line 101
 this.VerifyActiveList("30 days Challenge", ((string[])(null)));
 #line hidden
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("Verify Active List, Unit Tests", new string[] {
-                "Active_List"}, SourceLine=106)]
+                "Active_List"}, SourceLine=109)]
         public virtual void VerifyActiveList_UnitTests()
         {
-#line 98
+#line 101
 this.VerifyActiveList("Unit Tests", ((string[])(null)));
 #line hidden
         }
@@ -311,25 +327,25 @@ this.VerifyActiveList("Unit Tests", ((string[])(null)));
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify New Task", @__tags);
-#line 112
-this.ScenarioSetup(scenarioInfo);
-#line 113
-testRunner.Given("I am on the ToDoMvc AngularJS Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 114
-testRunner.When(string.Format("I Enter a New {0}", task), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 115
-testRunner.And("I press Enter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 116
+testRunner.Given("I am on the ToDoMvc AngularJS Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 117
+testRunner.When(string.Format("I Enter a New {0}", task), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 118
+testRunner.And("I press Enter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 119
 testRunner.Then(string.Format("the new {0} is populated on the List", task), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("Verify New Task, 30 days Challenge", new string[] {
-                "New_Task"}, SourceLine=119)]
+                "New_Task"}, SourceLine=122)]
         public virtual void VerifyNewTask_30DaysChallenge()
         {
-#line 112
+#line 115
 this.VerifyNewTask("30 days Challenge", ((string[])(null)));
 #line hidden
         }
@@ -343,29 +359,29 @@ this.VerifyNewTask("30 days Challenge", ((string[])(null)));
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify Complete Task", @__tags);
-#line 123
-this.ScenarioSetup(scenarioInfo);
-#line 124
-testRunner.Given("I am on the ToDoMvc AngularJS Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 125
-testRunner.When(string.Format("I Enter a New {0}", task), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 126
-testRunner.And("I press Enter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 127
-testRunner.And(string.Format("I click on Checkbox of Acive {0}", task), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.Given("I am on the ToDoMvc AngularJS Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 128
-testRunner.And("I Click on the Complete", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.When(string.Format("I Enter a New {0}", task), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 129
+testRunner.And("I press Enter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 130
+testRunner.And(string.Format("I click on Checkbox of Acive {0}", task), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 131
+testRunner.And("I Click on the Complete", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 132
 testRunner.Then(string.Format("the {0} is displayed on the Completed List", task), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("Verify Complete Task, Unit Tests", new string[] {
-                "Complete_Task"}, SourceLine=132)]
+                "Complete_Task"}, SourceLine=135)]
         public virtual void VerifyCompleteTask_UnitTests()
         {
-#line 123
+#line 126
 this.VerifyCompleteTask("Unit Tests", ((string[])(null)));
 #line hidden
         }
@@ -379,37 +395,37 @@ this.VerifyCompleteTask("Unit Tests", ((string[])(null)));
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify Clear Complete Task", @__tags);
-#line 136
-this.ScenarioSetup(scenarioInfo);
-#line 137
-testRunner.Given("I am on the ToDoMvc AngularJS Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 138
-testRunner.When(string.Format("I Enter a New {0}", task1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 139
-testRunner.And("I press Enter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
 #line 140
-testRunner.And(string.Format("I Enter a New {0}", task2), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.Given("I am on the ToDoMvc AngularJS Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 141
-testRunner.And("I press Enter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.When(string.Format("I Enter a New {0}", task1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 142
-testRunner.And(string.Format("I click on Checkbox of Acive {0}", task1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("I press Enter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 143
-testRunner.And("I Click on the Complete", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And(string.Format("I Enter a New {0}", task2), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 144
-testRunner.And(string.Format("click on Completed {0}", task1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("I press Enter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 145
-testRunner.Then(string.Format("only {0} is Displayed", task2), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+testRunner.And(string.Format("I click on Checkbox of Acive {0}", task1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 146
+testRunner.And("I Click on the Complete", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 147
+testRunner.And(string.Format("click on Completed {0}", task1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 148
+testRunner.Then(string.Format("only {0} is Displayed", task2), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 149
 testRunner.And(string.Format("{0} is not Displayed", task1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("Verify Clear Complete Task, Meetups", new string[] {
-                "Clear_Completed_Task"}, SourceLine=149)]
+                "Clear_Completed_Task"}, SourceLine=152)]
         public virtual void VerifyClearCompleteTask_Meetups()
         {
-#line 136
+#line 139
 this.VerifyClearCompleteTask("Meetups", "Challenge", ((string[])(null)));
 #line hidden
         }

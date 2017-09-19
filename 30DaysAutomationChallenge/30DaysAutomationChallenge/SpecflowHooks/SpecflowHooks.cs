@@ -34,7 +34,8 @@ namespace _30DaysAutomationChallenge.SpecflowHooks
         [BeforeStep]
         public static void LogStep()
         {
-            //Reports.ToDoMvcReport.test.Log(Status.Info,Reports.LogTrace.LastGherkinMessage); 
+            //Reports.ToDoMvcReport.test.Log(Status.Info,Reports.LogTrace.LastGherkinMessage);
+            //S.Info(Reports.LogTrace.LastGherkinMessage);
             //string value = ScenarioContext.Current.ScenarioInfo.ToString();
             //Reports.ToDoMvcReport.test.Log(Status.Info,value);
         }

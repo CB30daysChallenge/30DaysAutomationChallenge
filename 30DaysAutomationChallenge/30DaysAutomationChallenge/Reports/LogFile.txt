@@ -1,0 +1,24 @@
+Given I am on the ToDoMvc AngularJS Page
+done: FeatureStepDefinition.GivenIAmOnTheToDoMvcAngularJSPage() (7.3s)
+When I Enter New tasks
+  --- table step argument ---
+  | Tasks             |
+  | 30 days Challenge |
+  | Unit Tests        |
+done: FeatureStepDefinition.WhenIEnterNewTasks(<table>) (0.4s)
+And I Click on the Active
+done: FeatureStepDefinition.WhenIClickOnTheActive() (0.2s)
+Then all entered tasks are displayed
+done: FeatureStepDefinition.ThenAllEnteredTasksAreDisplayed() (0.2s)
+Given I am on the ToDoMvc AngularJS Page
+done: FeatureStepDefinition.GivenIAmOnTheToDoMvcAngularJSPage() (9.9s)
+When I Enter New tasks
+  --- table step argument ---
+  | Tasks             |
+  | 30 days Challenge |
+  | Unit Tests        |
+done: FeatureStepDefinition.WhenIEnterNewTasks(<table>) (1.4s)
+And I Click on the Active
+done: FeatureStepDefinition.WhenIClickOnTheActive() (0.2s)
+Then all entered tasks are displayed
+done: FeatureStepDefinition.ThenAllEnteredTasksAreDisplayed() (0.5s)

@@ -16,6 +16,8 @@ And I click on the checkbox of one of the tasks
 And I Click on the All 
 Then all entered tasks are displayed
 
+@Browser:Chrome
+@Browser:Firefox
 @Clear_Completed_Task
 Scenario:Verify Clear Complete Tasks
 Given I am on the ToDoMvc AngularJS Page
@@ -30,7 +32,8 @@ And I Click on the ClearCompleted
 And I Click on the All 
 Then only 'Sporting Solutions' is Displayed  in
 
-
+@Browser_Chrome
+@Browser_Firefox
 @Completed_List
 Scenario:Verify Completed Lists
 Given I am on the ToDoMvc AngularJS Page
@@ -43,8 +46,8 @@ And I Click on the Complete
 Then all entered tasks are displayed
 
 @Browser_Chrome
-#@Browser_Firefox
-#@Active_List
+@Browser_Firefox
+@Active_List
 Scenario:Verify Active Lists
 Given I am on the ToDoMvc AngularJS Page
 When I Enter New tasks
@@ -55,8 +58,8 @@ And I Click on the Active
 Then all entered tasks are displayed
 
 @Browser_Chrome
-#@Browser_Firefox
-#@New_Task
+@Browser_Firefox
+@New_Task
 Scenario:Verify New Tasks
 Given I am on the ToDoMvc AngularJS Page
 When I Enter New tasks
