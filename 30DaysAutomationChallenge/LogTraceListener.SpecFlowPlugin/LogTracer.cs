@@ -31,37 +31,34 @@ namespace LogTraceListener.SpecFlowPlugin
         public static string actualPath = path.Substring(0, path.LastIndexOf("bin"));
         public static string projectPath = new Uri(actualPath).LocalPath;
         public static string logPath = projectPath + "Reports\\LogFile.txt";
-        //public static string reportPath = @"C:\AutomationProjects\30DaysAutomationChallenge\30DaysAutomationChallenge\30DaysAutomationChallenge\Reports\WriteLines.txt";
-        //public StreamWriter outputFile = new StreamWriter(reportPath);
+
         public void WriteTestOutput(string message)
         {
 
             logMessage = message;
-            using (StreamWriter outputFile = new StreamWriter(logPath, true))
-            {
+            Console.WriteLine(message);
+            //using (StreamWriter outputFile = new StreamWriter(logPath, true))
+            //{
 
-                outputFile.WriteLine(message);
-                outputFile.Flush();
-                outputFile.Close();
-            }
-            //Debug.WriteLine(message);
-            //Console.WriteLine(message);
-            //EventLog.WriteEntry("mysource", "output: " + message);
-            //File.WriteAllText("myfile.txt", message);
+            //    //outputFile.WriteLine(message);
+            //    //outputFile.Flush();
+            //    //outputFile.Close();
+            //    Console.WriteLine(message);
+            //}
+
         }
         public void WriteToolOutput(string message)
         {
-            //File.WriteAllText("myfile.txt", message);
-            using (StreamWriter outputFile = new StreamWriter(logPath,true))
-            {
+            Console.WriteLine(message);
+            //using (StreamWriter outputFile = new StreamWriter(logPath,true))
+            //{
 
-                outputFile.WriteLine(message);
-                outputFile.Flush();
-                outputFile.Close();
-            }
-            //Debug.WriteLine(message);
-            //Console.WriteLine(message);
-            //EventLog.WriteEntry("mysource", "specflow: " + message);
+            //    //outputFile.WriteLine(message);
+            //    //outputFile.Flush();
+            //    //outputFile.Close();
+            ////    Console.WriteLine(message);
+            //}
+
         }
     }
 

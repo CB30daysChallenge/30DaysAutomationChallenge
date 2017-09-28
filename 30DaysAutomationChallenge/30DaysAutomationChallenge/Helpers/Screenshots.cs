@@ -20,6 +20,7 @@ namespace _30DaysAutomationChallenge.Helpers
             //ss.SaveAsFile(localPath, ScreenshotImageFormat.Png);
             //return localPath;
             ss.SaveAsFile(fileName, ScreenshotImageFormat.Png);
+            Console.WriteLine($"SCREENSHOT[ file:///{fileName} ]SCREENSHOT");
             return fileName;
         }
     }

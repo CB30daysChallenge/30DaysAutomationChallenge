@@ -19,7 +19,7 @@ namespace _30DaysAutomationChallenge.Reports
         public static string actualPath = path.Substring(0, path.LastIndexOf("bin"));
         public static string projectPath = new Uri(actualPath).LocalPath;
         public static string reportPath = projectPath + "Reports\\ToDoMvcReport.html";
-        //public static string reportPath = @"C:\AutomationProjects\30DaysAutomationChallenge\30DaysAutomationChallenge\30DaysAutomationChallenge\Reports" + "Reports\\ToDoMvcReport.html";
+        
 
         public static void SetupReport()
         {

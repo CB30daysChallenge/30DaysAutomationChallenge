@@ -1,6 +1,4 @@
-﻿using _30DaysAutomationChallenge.Helpers;
-using _30DaysAutomationChallenge.POM;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -10,40 +8,62 @@ using System.Linq;
 using System.Text;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
+using _30DaysAutomationChallenge.Helpers;
+using _30DaysAutomationChallenge.POM;
 
 namespace _30DaysAutomationChallenge.StepDefinitions
 {
     [Binding]
     public sealed class FeatureStepDefinition
     {
-        //private static IWebDriver driver = ScenarioContext.Current.Get<IWebDriver>();
-        public static string browserName = ConfigurationManager.AppSettings["browser"];
-        //public Drivers dr = new Drivers();
+        //ScenarioContext scenarioContext;
+        private ScenarioContext _scenarioContext;
 
-        // public IWebDriver driver = new IWebDriver();
-        static IWebDriver driver = Drivers.GetDriver(browserName);
-        //dr.GetDriver(browserName);
-        //drivers=dr
-        //driver= drGetDriver(browserName);
+
+        //public static string browserName = ConfigurationManager.AppSettings["browser"];
         public IEnumerable<Task> listOfTasks;
         public Task task;
-        //public Task[] =null;
+        //static IWebDriver driver = Drivers.GetDriver(browserName,driver);
+        //static IWebDriver driver = Drivers.GetDriver();
+        ToDoMvcPage  toDoMvcPage = new ToDoMvcPage();
+        //(ToDoMvcPage)CurrentPage =new ToDoMvcPage();
+
+        //public Drivers.
+        //public Drivers driv=new Drivers();
+        //DriverContext driverContext = new DriverContext();
+        //Helpers.Drivers.
+
+
+        // ToDoMvcPage toDoMvcPage = new ToDoMvcPage(driver);
+
+        //BasePage toDoMvcPage = new ToDoMvcPage(driver);
+        //BasePage.BasePage toDoMvcPage = new ToDoMvcPage(driver);
+        //Drivers.SetDriver(browserName);
+        //ToDoMvcPage toDoMvcPage;
+        public void ShareDataWithContextInjectionSteps1(ScenarioContext scenarioContext)
+        {
+            _scenarioContext = scenarioContext;
+        }
         public FeatureStepDefinition(Task task)
         {
-            this.task= task;
+            this.task = task;
         }
-
-    
-        ToDoMvcPage toDoMvcPage = new ToDoMvcPage(driver);
-
-
 
         [Given(@"I am on the ToDoMvc AngularJS Page")]
         public void GivenIAmOnTheToDoMvcAngularJSPage()
         {
 
-
+            //driverContext.SetDriverContext(browserName);
+            //toDoMvcPage = new ToDoMvcPage(driverContext.GetDriverContext());
+            //DriverContext.SetDriverContext(browserName);
+            //toDoMvcPage = new ToDoMvcPage(DriverContext.GetDriverContext());
+            //Drivers.SetDriver(browserName);
+            //_driver.Navigate().GoToUrl(Constants.GlobalConstants.ToDOMvcHomePage);
+            //var driver = Drivers.GetDriver();
+            //toDoMvcPage = new ToDoMvcPage();
             toDoMvcPage.OpenPage();
+            //_scenarioContext.Set(driver);
+            
 
         }
 
@@ -105,16 +125,7 @@ namespace _30DaysAutomationChallenge.StepDefinitions
         {
 
             listOfTasks = table.CreateSet<Task>();
-            //ScenarioContext.Current.Set(listOfTasks);
 
-            //foreach (var tsk in listOfTasks)
-            //{
-            //    //Task.
-            //    task.Tasks = tsk.ToString();
-            //    toDoMvcPage.CreateTask(tsk.ToString());
-            //    toDoMvcPage.enter();
-
-            //}
             foreach (var tsk in listOfTasks)
             {
 
@@ -123,20 +134,6 @@ namespace _30DaysAutomationChallenge.StepDefinitions
                 toDoMvcPage.enter();
 
             }
-
-            //foreach (var tk in table.CreateSet<Task>())
-            //{
-            //    task.Tasks = tk.Tasks.ToString();
-            //    toDoMvcPage.CreateTask(task.Tasks.ToString());
-            //    toDoMvcPage.enter();
-            //}
-            //foreach (var tk in table.CreateSet<Task>())
-            //{
-            //    task = ;
-            //    toDoMvcPage.CreateTask(task.Tasks.ToString());
-            //    toDoMvcPage.enter();
-            //}
-
 
         }
 
@@ -168,10 +165,12 @@ namespace _30DaysAutomationChallenge.StepDefinitions
             try
             {
                 Assert.AreEqual(task, value);
+                //Reports.ToDoMvcReport.test.Pass("Test Passed ");
             }
             catch (Exception ex)
             {
-                Reports.ToDoMvcReport.test.Fail("Test Failed " + ex);
+                //Reports.ToDoMvcReport.test.Fail("Test Failed " + ex);
+                Console.WriteLine("Test Failed " + ex);
             }
 
         }
@@ -214,14 +213,16 @@ namespace _30DaysAutomationChallenge.StepDefinitions
                 foreach (var tsk in listOfTasks)
                 {
                     string taskList = toDoMvcPage.GetTask(tsk.Tasks.ToString());
-                    //Assert.AreEqual(task.Tasks.ToString(), taskList);
                     Assert.AreEqual(tsk.Tasks.ToString(), taskList);
+                    //Reports.ToDoMvcReport.test.Pass("Test Passed ");
+                    //Reports.ToDoMvcReport.test.Log(
                 }
 
             }
             catch (Exception ex)
             {
-                Reports.ToDoMvcReport.test.Fail("Test Failed " + ex);
+                //Reports.ToDoMvcReport.test.Fail("Test Failed " + ex);
+                Console.WriteLine("Test Failed " + ex);
             }
         }
 
@@ -247,11 +248,13 @@ namespace _30DaysAutomationChallenge.StepDefinitions
             try
             {
                 Assert.AreEqual(task, value);
-               
+                //Reports.ToDoMvcReport.test.Pass("Test Passed ");
+
             }
             catch (Exception ex)
             {
-                Reports.ToDoMvcReport.test.Fail("Test Failed " + ex);
+                //Reports.ToDoMvcReport.test.Fail("Test Failed " + ex);
+                Console.WriteLine("Test Failed "+ex);
             }
 
 
@@ -275,7 +278,8 @@ namespace _30DaysAutomationChallenge.StepDefinitions
             }
             catch (Exception ex)
             {
-                Reports.ToDoMvcReport.test.Fail("Test Failed " + ex);
+                //Reports.ToDoMvcReport.test.Fail("Test Failed " + ex);
+                Console.WriteLine("Test Failed " + ex);
             }
         }
 
@@ -354,7 +358,8 @@ namespace _30DaysAutomationChallenge.StepDefinitions
             }
             catch(Exception ex)
             {
-                Reports.ToDoMvcReport.test.Fail("Test Failed "+ex);
+                // Reports.ToDoMvcReport.test.Fail("Test Failed "+ex);
+                Console.WriteLine("Test Failed " + ex);
             }
             
         }

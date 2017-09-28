@@ -7,41 +7,115 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using BoDi;
 
 namespace _30DaysAutomationChallenge.Helpers
 {
     public class Drivers
     {
         public static IWebDriver driver;
-        
-        public static IWebDriver GetDriver(string browserName)
+        public static string browserName = System.Configuration.ConfigurationManager.AppSettings["browser"];
+        private readonly IObjectContainer _objectContainer;
+
+        //public static IWebDriver GetDriver(string browserName, IWebDriver driver)
+        //{
+        //    if (browserName.Equals("Chrome"))
+        //    {
+        //        driver = new ChromeDriver();
+        //        driver = driver;
+        //    }
+        //    if (browserName.Equals("Firefox"))
+        //    {
+        //        driver = new FirefoxDriver();
+        //        driver = driver;
+        //    }
+        //    //if (browserName.Equals("IE"))
+        //    //{
+        //    //    driver = new
+        //    //}
+        //    driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
+        //    return driver;
+        //}
+
+        //public static IWebDriver GetDriver()
+        //{
+        //    if (browserName.Equals("Chrome"))
+        //    {
+        //        driver = new ChromeDriver();
+        //       // driver = driver;
+        //    }
+        //    if (browserName.Equals("Firefox"))
+        //    {
+        //        driver = new FirefoxDriver();
+        //        //driver = driver;
+        //    }
+        //    //if (browserName.Equals("IE"))
+        //    //{
+        //    //    driver = new
+        //    //}
+        //    driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);
+        //    return driver;
+        //}
+
+        public Drivers(IObjectContainer objectContainer)
         {
-            if (browserName.Equals("Chrome"))
+            _objectContainer = objectContainer;
+        }
+
+        public Drivers()
+        {
+            
+        }
+
+        public static void SetDriver(string browserName)
+        {
+            switch (browserName)
             {
-                driver = new ChromeDriver();
+                case ("Chrome"):
+                {
+                        driver = new ChromeDriver();
+                        driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(6);
+                        driver.Manage().Cookies.DeleteAllCookies();
+                        driver.Manage().Window.Maximize();
+                        break;
+                    }
+                case ("Firefox"):
+                {
+                        driver = new FirefoxDriver();
+                        driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(6);
+                        driver.Manage().Cookies.DeleteAllCookies();
+                        driver.Manage().Window.Maximize();
+                        break;
+                    }
+                default:
+                    {
+                        driver = new FirefoxDriver();
+                        driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(100);
+                        driver.Manage().Cookies.DeleteAllCookies();
+                        driver.Manage().Window.Maximize();
+                        break;
+                    }
             }
-            if (browserName.Equals("Firefox"))
-            {
-                driver = new FirefoxDriver();
-            }
-            //if (browserName.Equals("IE"))
-            //{
-            //    driver = new
-            //}
+
+        }
+
+        public static IWebDriver GetDriver()
+        {
+
             return driver;
+        }
+
+        public static void goToUrl()
+        {
+
+            driver.Navigate().GoToUrl((Constants.GlobalConstants.ToDOMvcHomePage));
         }
         public static void CloseDriver()
         {
+            //_objectContainer.RegisterInstanceAs<IWebDriver>(_driver);
             driver.Close();
             driver.Quit();
         }
-        //public static IEnumerable<string> BrowserToRunWith()
-        //{
-        //    string[] browsers = { "chrome", "firefox" };
-        //    foreach (string browser in browsers)
-        //    {
-        //       yield return browser;
-        //    }
-        //}
+
     }
 }

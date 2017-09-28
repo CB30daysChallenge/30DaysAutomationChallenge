@@ -13,11 +13,9 @@ using NUnit.Framework;
 
 namespace _30DaysAutomationChallenge.POM
 {
-    public class ToDoMvcPage
+    public class ToDoMvcPage:BasePage.BasePage
     {
-   
-        public IWebDriver driver;
-        WebDriverWait wait;
+        
         private const string xpathofTextbox="//*[@id=\"new-todo\"]";
         private const string xpathofClearCompleted = "//*[@id=\"clear-completed\"]";
         private const string linkTextActive = "Active";
@@ -48,19 +46,25 @@ namespace _30DaysAutomationChallenge.POM
         public IList<IWebElement> ListTasks { get; set; }
 
 
-        public ToDoMvcPage(IWebDriver driver)
-        {
-            this.driver = driver;
-            wait =new WebDriverWait(driver, TimeSpan.FromMinutes(1));
-            PageFactory.InitElements(driver, this);
-        }
+        //public ToDoMvcPage(IWebDriver driver)
+        //{
+        //    this.driver = driver;
+        //    wait = new WebDriverWait(driver, TimeSpan.FromMinutes(1));
+        //    PageFactory.InitElements(driver, this);
+        //}
 
+        //public ToDoMvcPage(IWebDriver driver) : base(driver)
+        //{
+        //}
 
         public void OpenPage()
         {
             try
             {
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
+                
                 driver.Navigate().GoToUrl(Constants.GlobalConstants.ToDOMvcHomePage);
+                string file = Helpers.Screenshots.TakeScreenshot(driver);
             }
             catch (ElementNotVisibleException ex)
             {
@@ -88,9 +92,11 @@ namespace _30DaysAutomationChallenge.POM
             //Reports.ToDoMvcReport.test.Log(Status.Info, "public void ClearList()");
             try
             {
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
                 for (int i = 0; i < CheckboxList.Count; i++)
                 {
                     CheckboxList.ElementAt(i).Clear();
+                    string file = Helpers.Screenshots.TakeScreenshot(driver);
                 }
             }
             catch (ElementNotVisibleException ex)
@@ -109,8 +115,10 @@ namespace _30DaysAutomationChallenge.POM
                 throw ex;
             }
         }
+        //public override abstract void ExecuteLoad();
 
- 
+        //public override abstract bool EvaluateLoadedStatus();
+
         public void ClickAllButton()
         {
         }
@@ -120,21 +128,22 @@ namespace _30DaysAutomationChallenge.POM
             //ClearCompleted.Displayed.Equals(true);
             try
             {
+                //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
                 ClearCompleted.Click();
             }
             catch (ElementNotVisibleException ex)
             {
                 Reports.ToDoMvcReport.test.Fail("Unable to Find the ClearAll Button " + ex);
-                string file = Helpers.Screenshots.TakeScreenshot(driver);
-                Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
+                //string file = Helpers.Screenshots.TakeScreenshot(driver);
+                //Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
                 throw ex;
             }
             catch (Exception ex)
             {
                 Reports.ToDoMvcReport.test.Fail("Unable to Find the ClearAll Button " + ex);
-                string file=Helpers.Screenshots.TakeScreenshot(driver);
+                //string file=Helpers.Screenshots.TakeScreenshot(driver);
                 //Reports.ToDoMvcReport.test.Error("Error" + MediaEntityBuilder.CreateScreenCaptureFromPath(Helpers.Screenshots.TakeScreenshot(driver)).Build());
-                Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
+                //Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
                 throw ex;
             }
         }
@@ -160,7 +169,9 @@ namespace _30DaysAutomationChallenge.POM
             //Reports.ToDoMvcReport.test.Log(Status.Info, "public void ClickActiveButton()");
             try
             {
+                //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
                 Active.Click();
+                string file = Helpers.Screenshots.TakeScreenshot(driver);
             }
             catch (ElementNotVisibleException ex)
             {
@@ -181,10 +192,13 @@ namespace _30DaysAutomationChallenge.POM
         {
 
             //Reports.ToDoMvcReport.test.Log(Status.Info, "public ToDoMvcPage CreateTask(string newTask)");
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
+           // driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
             try
             {
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
+                string file = Helpers.Screenshots.TakeScreenshot(driver);
                 NewToDoXPath.SendKeys(newTask);
+
             }
             catch (ElementNotVisibleException ex)
             {
@@ -218,6 +232,7 @@ namespace _30DaysAutomationChallenge.POM
             int size = ListTasks.Count();
             try
             {
+                //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
                 for (int i = 0; i < size; i++)
                 {
   
@@ -242,7 +257,7 @@ namespace _30DaysAutomationChallenge.POM
             {
                 Reports.ToDoMvcReport.test.Fail("Unable to Find the Task " + ex);
                 string file=Helpers.Screenshots.TakeScreenshot(driver);
-                //Reports.ToDoMvcReport.test.Error("Error " + MediaEntityBuilder.CreateScreenCaptureFromPath(Helpers.Screenshots.TakeScreenshot(driver)).Build());
+                Reports.ToDoMvcReport.test.Error("Error " + MediaEntityBuilder.CreateScreenCaptureFromPath(Helpers.Screenshots.TakeScreenshot(driver)).Build());
                 Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
                 throw ex;
             }
@@ -266,10 +281,9 @@ namespace _30DaysAutomationChallenge.POM
         {
             //Reports.ToDoMvcReport.test.Log(Status.Info, "public void enter()");
             try
-            {
-   
+            {                
                 NewToDoXPath.SendKeys(Keys.Enter);
-                //Reports.ToDoMvcReport.test.Pass("Element Found");
+                
             }
             catch (ElementNotVisibleException ex)
             {
@@ -280,9 +294,9 @@ namespace _30DaysAutomationChallenge.POM
             catch (Exception ex)
             {
                 Reports.ToDoMvcReport.test.Fail("Unable to Find the Textbox " + ex);
-                string file=Helpers.Screenshots.TakeScreenshot(driver);
-                //Reports.ToDoMvcReport.test.Error("Error" + MediaEntityBuilder.CreateScreenCaptureFromPath(Helpers.Screenshots.TakeScreenshot(driver)).Build());
-                Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
+                string file = Helpers.Screenshots.TakeScreenshot(driver);
+                Reports.ToDoMvcReport.test.Error("Error" + MediaEntityBuilder.CreateScreenCaptureFromPath(Helpers.Screenshots.TakeScreenshot(driver)).Build());
+                Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
             }
 
         }
@@ -295,10 +309,12 @@ namespace _30DaysAutomationChallenge.POM
             int size = CheckboxList.Count();
             try
             {
+                
                 if (size == 1)
                 {
                     IWebElement element = driver.FindElement(By.CssSelector("#todo-list > li > div > input"));
                     element.Click();
+                    string file = Helpers.Screenshots.TakeScreenshot(driver);
                 }
                 else if (size > 1)
                 {
@@ -308,6 +324,7 @@ namespace _30DaysAutomationChallenge.POM
 
                         IWebElement element = driver.FindElement(By.CssSelector("#todo-list > li:nth-child(" + i + ") > div > input"));
                         element.Click();
+                        string file = Helpers.Screenshots.TakeScreenshot(driver);
 
                     }
                 }
@@ -316,16 +333,16 @@ namespace _30DaysAutomationChallenge.POM
             catch (ElementNotVisibleException ex)
             {
                 
-                Reports.ToDoMvcReport.test.Fail("Unable to Find the Element " + ex);
+                //Reports.ToDoMvcReport.test.Fail("Unable to Find the Element " + ex);
                 string file = Helpers.Screenshots.TakeScreenshot(driver);
-                Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
+                //Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
             }
             catch (Exception ex)
             {
                 
-                Reports.ToDoMvcReport.test.Fail("Unable to Find the Element " +ex);
+                //Reports.ToDoMvcReport.test.Fail("Unable to Find the Element " +ex);
                 string file=Helpers.Screenshots.TakeScreenshot(driver);
-                Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
+                //Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
             }
 
         }
@@ -339,15 +356,16 @@ namespace _30DaysAutomationChallenge.POM
             int size = CheckboxList.Count();
             try
             {
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
                 if (size == 1)
                 {
                     IWebElement element = driver.FindElement(By.CssSelector("#todo-list > li > div > input"));
                     if (element.GetAttribute(task) == task)
                     {
                         element.Click();
-                        //break;
+                        
                     }
-                    //break;
+                    
                 }
                 else if (size > 1)
                 {
@@ -361,7 +379,8 @@ namespace _30DaysAutomationChallenge.POM
                         if (ele.Text == task)
                         {
                             element.Click();
-                            //break;
+                            string file = Helpers.Screenshots.TakeScreenshot(driver);
+                            
                         }
 
                     }
@@ -372,14 +391,14 @@ namespace _30DaysAutomationChallenge.POM
             {
                 Reports.ToDoMvcReport.test.Fail("Unable to Find the Element " + ex);
                 string file = Helpers.Screenshots.TakeScreenshot(driver);
-                Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
+               // Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Unable to find elements " + ex);
                 Reports.ToDoMvcReport.test.Fail("Unable to Find the Element " + ex);
                 string file=Helpers.Screenshots.TakeScreenshot(driver);
-                Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
+                //Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
             }
 
         }
@@ -393,10 +412,12 @@ namespace _30DaysAutomationChallenge.POM
             int size = CheckboxList.Count();
             try
             {
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
                 if (size == 1)
                 {
                     IWebElement element = driver.FindElement(By.CssSelector("#todo-list > li > div > input"));
                     element.Click();
+                    string file = Helpers.Screenshots.TakeScreenshot(driver);
                 }
                 else if (size > 1)
                 {
@@ -406,6 +427,7 @@ namespace _30DaysAutomationChallenge.POM
 
                         IWebElement element = driver.FindElement(By.CssSelector("#todo-list > li:nth-child(" + i + ") > div > input"));
                         element.Click();
+                        string file = Helpers.Screenshots.TakeScreenshot(driver);
 
                     }
                 }
@@ -437,12 +459,14 @@ namespace _30DaysAutomationChallenge.POM
             int size = CheckboxList.Count();
             try
             {
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
                 if (size == 1)
                 {
                     IWebElement element = driver.FindElement(By.CssSelector("#todo-list > li > div > input"));
                     if (element.Text == task)
                     {
                         element.Click();
+                        string file = Helpers.Screenshots.TakeScreenshot(driver);
                         //break;
                     }
                 }
@@ -456,6 +480,7 @@ namespace _30DaysAutomationChallenge.POM
                         if (element.Text == task)
                         {
                             element.Click();
+                            string file = Helpers.Screenshots.TakeScreenshot(driver);
                             //break;
                         }
 

@@ -118,6 +118,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="BasePage\Base.cs" />
+    <Compile Include="BasePage\BasePage.cs" />
+    <Compile Include="BasePage\Browser.cs" />
     <Compile Include="Constants\GlobalConstants.cs" />
     <Compile Include="Features\ToDoMvcFeature.feature.cs">
       <AutoGen>True</AutoGen>
@@ -126,9 +129,10 @@
     </Compile>
     <Compile Include="Helpers\Drivers.cs" />
     <Compile Include="Helpers\Screenshots.cs" />
+    <Compile Include="POM\DriverContext.cs" />
+    <Compile Include="POM\LoadableComponent.cs" />
     <Compile Include="POM\ToDoMvcPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reports\LogTrace.cs" />
     <Compile Include="Reports\ToDoMvcReport.cs" />
     <Compile Include="SpecflowHooks\SpecflowHooks.cs" />
     <Compile Include="StepDefinitions\FeatureStepDefinition.cs" />
@@ -145,6 +149,9 @@
     <None Include="Features\ToDoMvcFeature.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ToDoMvcFeature.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\MyReportTemplate.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
