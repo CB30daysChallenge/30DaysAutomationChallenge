@@ -3,38 +3,8 @@
 	As a user
 	I want to ensure the ToDOMVc page elements and task lists are displayed correctly
 
-@Browser:Chrome
-@Browser:Firefox
-@All_Lists
-Scenario:Verify All Lists
-Given I am on the ToDoMvc AngularJS Page
-When I Enter New tasks
-| Tasks      |
-| Automation |
-| Atlas      |
-And I click on the checkbox of one of the tasks
-And I Click on the All 
-Then all entered tasks are displayed
-
-@Browser:Chrome
-@Browser:Firefox
-@Clear_Completed_Task
-Scenario:Verify Clear Complete Tasks
-Given I am on the ToDoMvc AngularJS Page
-When I Enter New tasks
-| Tasks               |
-| Betradar            |
-| Sporting Solutions  |
-And I click on Checkbox of 'Betradar' one of Acive tasks
-And I Click on the Complete 
-And click on Checkbox of 'Betradar'one of the Completed tasks
-And I Click on the ClearCompleted
-And I Click on the All 
-Then only 'Sporting Solutions' is Displayed  in
-
 @Browser_Chrome
 @Browser_Firefox
-@Completed_List
 Scenario:Verify Completed Lists
 Given I am on the ToDoMvc AngularJS Page
 When I Enter New tasks
@@ -47,7 +17,6 @@ Then all entered tasks are displayed
 
 @Browser_Chrome
 @Browser_Firefox
-@Active_List
 Scenario:Verify Active Lists
 Given I am on the ToDoMvc AngularJS Page
 When I Enter New tasks
@@ -59,7 +28,6 @@ Then all entered tasks are displayed
 
 @Browser_Chrome
 @Browser_Firefox
-@New_Task
 Scenario:Verify New Tasks
 Given I am on the ToDoMvc AngularJS Page
 When I Enter New tasks
@@ -67,6 +35,33 @@ When I Enter New tasks
 | SIS Greyhounds    |
 | SIS Throughbreds  | 
 Then all entered tasks are displayed
+
+@Browser_Chrome
+@Browser_Firefox
+Scenario:Verify All Lists
+Given I am on the ToDoMvc AngularJS Page
+When I Enter New tasks
+| Tasks      |
+| Automation |
+| Atlas      |
+And I click on the checkbox of one of the tasks
+And I Click on the All 
+Then all entered tasks are displayed
+
+@Browser_Chrome
+@Browser_Firefox
+Scenario:Verify Clearing Completed Tasks
+Given I am on the ToDoMvc AngularJS Page
+When I Enter New tasks
+| Tasks              |
+| Betradar           |
+| Sporting Solutions |
+And I Click on Checkbox of 'Betradar' one of Active tasks
+And I Click on the Complete
+And I click on the checkbox 'Betradar' one of the Completed tasks
+And I Click on the ClearCompleted
+And I Click on the All
+Then only 'Sporting Solutions' is displayed in
 
 
 #@Browser_Chrome

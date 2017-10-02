@@ -81,7 +81,13 @@ namespace _30DaysAutomationChallenge.Helpers
                     }
                 case ("Firefox"):
                 {
-                        driver = new FirefoxDriver();
+                        var opt = new FirefoxOptions
+                        {
+                            BrowserExecutableLocation = @"c:\program files\mozilla firefox\firefox.exe"
+                        };
+                        driver = new FirefoxDriver(opt);
+
+                        //driver = new FirefoxDriver();
                         driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(6);
                         driver.Manage().Cookies.DeleteAllCookies();
                         driver.Manage().Window.Maximize();

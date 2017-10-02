@@ -2,7 +2,7 @@
 <TestProfile xmlns="http://www.specflow.org/schemas/plus/TestProfile/1.5">
   <Settings projectName="30DaysAutomationChallenge" projectId="{d5f961a9-0673-4188-8ff8-b9334cb4cf3c}" />
   <!--<Report disable="true"/>-->
-  <Execution stopAfterFailures="2" testThreadCount="3" testSchedulingMode="Sequential" />
+  <Execution stopAfterFailures="2" testThreadCount="1" testSchedulingMode="Sequential" retryFor="None" />
   <!-- For collecting by a SpecRun server update and enable the following element. For using the 
       collected statistics, set testSchedulingMode="Adaptive" attribute on the <Execution> element.
     <Server serverUrl="http://specrunserver:6365" publishResults="true" />

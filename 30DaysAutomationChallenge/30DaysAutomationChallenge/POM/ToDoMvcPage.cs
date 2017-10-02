@@ -45,18 +45,6 @@ namespace _30DaysAutomationChallenge.POM
         [FindsBy(How = How.ClassName, Using = listClassView)]
         public IList<IWebElement> ListTasks { get; set; }
 
-
-        //public ToDoMvcPage(IWebDriver driver)
-        //{
-        //    this.driver = driver;
-        //    wait = new WebDriverWait(driver, TimeSpan.FromMinutes(1));
-        //    PageFactory.InitElements(driver, this);
-        //}
-
-        //public ToDoMvcPage(IWebDriver driver) : base(driver)
-        //{
-        //}
-
         public void OpenPage()
         {
             try
@@ -68,28 +56,24 @@ namespace _30DaysAutomationChallenge.POM
             }
             catch (ElementNotVisibleException ex)
             {
-                Reports.ToDoMvcReport.test.Fail("Unable to open ToDoMvc Page " + ex);
+                Console.WriteLine("Unable to Find the Element " + ex);
                 string file = Helpers.Screenshots.TakeScreenshot(driver);
-                Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
                 throw ex;
             }
             catch (Exception ex)
             {
-                Reports.ToDoMvcReport.test.Fail("Unable to open ToDoMvc Page " + ex);
+                Console.WriteLine("Unable to Find the Element " + ex);
                 string file=Helpers.Screenshots.TakeScreenshot(driver);
-                //Reports.ToDoMvcReport.test.Error("Error" + MediaEntityBuilder.CreateScreenCaptureFromPath(Helpers.Screenshots.TakeScreenshot(driver)).Build());
-                Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
                 throw ex;
             }
         }
         public void ClearCheckBox()
         {
-            //Reports.ToDoMvcReport.test.Log(Status.Info, "public void ClearCheckBox()");
             NewToDoXPath.Clear();
         }
         public void ClearList()
         {
-            //Reports.ToDoMvcReport.test.Log(Status.Info, "public void ClearList()");
+            
             try
             {
                 driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
@@ -101,55 +85,45 @@ namespace _30DaysAutomationChallenge.POM
             }
             catch (ElementNotVisibleException ex)
             {
-                Reports.ToDoMvcReport.test.Fail("Unable to Find the ClearAll Button " + ex);
+                Console.WriteLine("Unable to Find the Element " + ex);
                 string file = Helpers.Screenshots.TakeScreenshot(driver);
-                Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
                 throw ex;
             }
             catch (Exception ex)
             {
-                Reports.ToDoMvcReport.test.Fail("Unable to Find the ClearAll Button " + ex);
+                Console.WriteLine("Unable to Find the Element " + ex);
                 string file=Helpers.Screenshots.TakeScreenshot(driver);
-                //Reports.ToDoMvcReport.test.Error("Error" + MediaEntityBuilder.CreateScreenCaptureFromPath(Helpers.Screenshots.TakeScreenshot(driver)).Build());
-                Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
                 throw ex;
             }
         }
-        //public override abstract void ExecuteLoad();
-
-        //public override abstract bool EvaluateLoadedStatus();
 
         public void ClickAllButton()
         {
+            All.Click();
         }
         public void ClickClearAllButton() 
         {
-            //Reports.ToDoMvcReport.test.Log(Status.Info, "public void ClickClearAllButton()");
-            //ClearCompleted.Displayed.Equals(true);
+
             try
             {
-                //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
                 ClearCompleted.Click();
             }
             catch (ElementNotVisibleException ex)
             {
-                Reports.ToDoMvcReport.test.Fail("Unable to Find the ClearAll Button " + ex);
-                //string file = Helpers.Screenshots.TakeScreenshot(driver);
-                //Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
+                Console.WriteLine("Unable to Find the Element " + ex);
                 throw ex;
             }
             catch (Exception ex)
             {
-                Reports.ToDoMvcReport.test.Fail("Unable to Find the ClearAll Button " + ex);
+                Console.WriteLine("Unable to Find the Element " + ex);
                 //string file=Helpers.Screenshots.TakeScreenshot(driver);
-                //Reports.ToDoMvcReport.test.Error("Error" + MediaEntityBuilder.CreateScreenCaptureFromPath(Helpers.Screenshots.TakeScreenshot(driver)).Build());
-                //Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
                 throw ex;
+                
             }
         }
         public void ClickCompletedButton()
         {
-            //Reports.ToDoMvcReport.test.Log(Status.Info, "public void ClickCompletedButton()");
+            
             try
             {
                 Completed.Click();
@@ -157,73 +131,55 @@ namespace _30DaysAutomationChallenge.POM
 
             catch (Exception ex)
             {
-                Reports.ToDoMvcReport.test.Fail("Unable to Find the Complete Button " + ex);
+                Console.WriteLine("Unable to Find the Complete Button " + ex);
                 string file=Helpers.Screenshots.TakeScreenshot(driver);
-                //Reports.ToDoMvcReport.test.Error("Error" + MediaEntityBuilder.CreateScreenCaptureFromPath(Helpers.Screenshots.TakeScreenshot(driver)).Build());
-                Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
                 throw ex;
             }
         }
         public void ClickActiveButton()
         {
-            //Reports.ToDoMvcReport.test.Log(Status.Info, "public void ClickActiveButton()");
+            
             try
             {
-                //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
                 Active.Click();
                 string file = Helpers.Screenshots.TakeScreenshot(driver);
             }
             catch (ElementNotVisibleException ex)
             {
-                Reports.ToDoMvcReport.test.Fail("Unable to Find/click the Active Button  " + ex);
+                Console.WriteLine("Unable to Find/click the Active Button  " + ex);
                 Helpers.Screenshots.TakeScreenshot(driver);
-                Reports.ToDoMvcReport.test.Error("Error" + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(Helpers.Screenshots.TakeScreenshot(driver)).Build());
                 throw ex;
             }
             catch (Exception ex)
             {
-                Reports.ToDoMvcReport.test.Fail("Unable to Find/click the Active Button  " + ex);
+                Console.WriteLine("Unable to Find/click the Active Button  " + ex);
                 Helpers.Screenshots.TakeScreenshot(driver);
-                Reports.ToDoMvcReport.test.Error("Error" + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(Helpers.Screenshots.TakeScreenshot(driver)).Build());
                 throw ex;
             }
         }
         public ToDoMvcPage CreateTask(string newTask)
         {
 
-            //Reports.ToDoMvcReport.test.Log(Status.Info, "public ToDoMvcPage CreateTask(string newTask)");
-           // driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
             try
             {
-                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
                 string file = Helpers.Screenshots.TakeScreenshot(driver);
                 NewToDoXPath.SendKeys(newTask);
 
             }
             catch (ElementNotVisibleException ex)
             {
-                Reports.ToDoMvcReport.test.Fail("Unable to Find the Textbox " + ex);
+                Console.WriteLine("Unable to Find the Textbox " + ex);
                 string file = Helpers.Screenshots.TakeScreenshot(driver);
-                Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
                 throw ex;
             }
             catch (Exception ex)
             {
-                Reports.ToDoMvcReport.test.Fail("Unable to Find the Textbox " + ex);
+                Console.WriteLine("Unable to Find the Textbox " + ex);
                 string file=Helpers.Screenshots.TakeScreenshot(driver);
-                Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
                 throw ex;
             }
             return this;
          }
-        //public string GetAllTasks( List<string> tasks)
-        //{
-        //    int size = ListTasks.Count();
-        //    List<IWebElement> elementList = new List<IWebElement>;
-        //    foreach (IWebElement ele in ListTasks)
-        //    {
-        //        elementList = ele;
-        //    }
 
         public string GetTask(string task)
         {
@@ -232,7 +188,7 @@ namespace _30DaysAutomationChallenge.POM
             int size = ListTasks.Count();
             try
             {
-                //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
+                
                 for (int i = 0; i < size; i++)
                 {
   
@@ -248,38 +204,22 @@ namespace _30DaysAutomationChallenge.POM
             }
             catch (ElementNotVisibleException ex)
             {
-                Reports.ToDoMvcReport.test.Fail("Unable to Find the Task " + ex);
+                Console.WriteLine("Unable to Find the Task " + ex);
                 string file = Helpers.Screenshots.TakeScreenshot(driver);
-                Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
                 throw ex;
             }
             catch (Exception ex)
             {
-                Reports.ToDoMvcReport.test.Fail("Unable to Find the Task " + ex);
+                Console.WriteLine("Unable to Find the Task " + ex);
                 string file=Helpers.Screenshots.TakeScreenshot(driver);
-                Reports.ToDoMvcReport.test.Error("Error " + MediaEntityBuilder.CreateScreenCaptureFromPath(Helpers.Screenshots.TakeScreenshot(driver)).Build());
-                Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
                 throw ex;
             }
                 
                 return element.Text;
 
-           // }
-            //catch (Exception ex)
-            //{
-            //    Reports.ToDoMvcReport.test.Fail("Unable to Find the Element" +ex);
-            //    Helpers.Screenshots.TakeScreenshot(driver);
-            //    //Reports.ToDoMvcReport.test.Error("Error" + MediaEntityBuilder.CreateScreenCaptureFromPath(Helpers.Screenshots.TakeScreenshot(driver)).Build());
-            //    return ex.ToString();
-
-            //}
-             
-
-
         }
         public void enter()
         {
-            //Reports.ToDoMvcReport.test.Log(Status.Info, "public void enter()");
             try
             {                
                 NewToDoXPath.SendKeys(Keys.Enter);
@@ -287,29 +227,25 @@ namespace _30DaysAutomationChallenge.POM
             }
             catch (ElementNotVisibleException ex)
             {
-                Reports.ToDoMvcReport.test.Fail("Unable to Find the Textbox " + ex);
+                Console.WriteLine("Unable to Find the Element " + ex);
                 string file = Helpers.Screenshots.TakeScreenshot(driver);
-                Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
             }
             catch (Exception ex)
             {
-                Reports.ToDoMvcReport.test.Fail("Unable to Find the Textbox " + ex);
+                Console.WriteLine("Unable to Find the Element " + ex);
                 string file = Helpers.Screenshots.TakeScreenshot(driver);
-                Reports.ToDoMvcReport.test.Error("Error" + MediaEntityBuilder.CreateScreenCaptureFromPath(Helpers.Screenshots.TakeScreenshot(driver)).Build());
-                Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
+
             }
 
         }
         public void ClickOnActiveTask()
         {
-
-            //Reports.ToDoMvcReport.test.Log(Status.Info, "public void ClickOnActiveTask()");
             CheckboxList = driver.FindElements(By.ClassName("view"));
-           
+
             int size = CheckboxList.Count();
             try
             {
-                
+
                 if (size == 1)
                 {
                     IWebElement element = driver.FindElement(By.CssSelector("#todo-list > li > div > input"));
@@ -328,21 +264,21 @@ namespace _30DaysAutomationChallenge.POM
 
                     }
                 }
-                Reports.ToDoMvcReport.test.Pass("Element Found");
+
             }
             catch (ElementNotVisibleException ex)
             {
-                
-                //Reports.ToDoMvcReport.test.Fail("Unable to Find the Element " + ex);
+
+                Console.WriteLine("Unable to Find the Element " + ex);
                 string file = Helpers.Screenshots.TakeScreenshot(driver);
-                //Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
+
             }
             catch (Exception ex)
             {
-                
-                //Reports.ToDoMvcReport.test.Fail("Unable to Find the Element " +ex);
-                string file=Helpers.Screenshots.TakeScreenshot(driver);
-                //Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
+
+                string file = Helpers.Screenshots.TakeScreenshot(driver);
+                Console.WriteLine("Unable to Find the Element " + ex);
+
             }
 
         }
@@ -350,7 +286,6 @@ namespace _30DaysAutomationChallenge.POM
         public void ClickOnActiveTask(string task)
         {
 
-            //Reports.ToDoMvcReport.test.Log(Status.Info, "public void ClickOnActiveTask()");
             CheckboxList = driver.FindElements(By.ClassName("view"));
 
             int size = CheckboxList.Count();
@@ -363,9 +298,9 @@ namespace _30DaysAutomationChallenge.POM
                     if (element.GetAttribute(task) == task)
                     {
                         element.Click();
-                        
+
                     }
-                    
+
                 }
                 else if (size > 1)
                 {
@@ -374,40 +309,36 @@ namespace _30DaysAutomationChallenge.POM
                     {
 
                         IWebElement element = driver.FindElement(By.CssSelector("#todo-list > li:nth-child(" + i + ") > div > input"));
-                        IWebElement ele= driver.FindElement(By.CssSelector("#todo-list > li:nth-child(" + i + ") > div > label"));
+                        IWebElement ele = driver.FindElement(By.CssSelector("#todo-list > li:nth-child(" + i + ") > div > label"));
                         string text = element.Text.ToString();
                         if (ele.Text == task)
                         {
                             element.Click();
                             string file = Helpers.Screenshots.TakeScreenshot(driver);
-                            
+
                         }
 
                     }
                 }
-                Reports.ToDoMvcReport.test.Pass("Element Found");
+
             }
             catch (ElementNotVisibleException ex)
             {
-                Reports.ToDoMvcReport.test.Fail("Unable to Find the Element " + ex);
                 string file = Helpers.Screenshots.TakeScreenshot(driver);
-               // Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
+                Console.WriteLine("Unable to find elements " + ex);
+
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Unable to find elements " + ex);
-                Reports.ToDoMvcReport.test.Fail("Unable to Find the Element " + ex);
-                string file=Helpers.Screenshots.TakeScreenshot(driver);
-                //Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
+                string file = Helpers.Screenshots.TakeScreenshot(driver);
             }
 
         }
 
         public void clickOnCompletedtTask()
         {
-            //Reports.ToDoMvcReport.test.Log(Status.Info, "public void clickOnCompletedtTask()");
             CheckboxList = driver.FindElements(By.ClassName("view"));
-
 
             int size = CheckboxList.Count();
             try
@@ -431,43 +362,45 @@ namespace _30DaysAutomationChallenge.POM
 
                     }
                 }
-                Reports.ToDoMvcReport.test.Pass("Element Found");
+               
             }
             catch (ElementNotVisibleException ex)
             {
-                Reports.ToDoMvcReport.test.Fail("Unable to Find the Element " + ex);
+                Console.WriteLine("Unable to Find the Element " + ex);
                 string file = Helpers.Screenshots.TakeScreenshot(driver);
-                Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
             }
 
             catch (Exception ex)
             {
                 Console.WriteLine("Unable to find elements " + ex);
-                Reports.ToDoMvcReport.test.Fail("Unable to Find the Element "+ex);
                 string file=Helpers.Screenshots.TakeScreenshot(driver);
-                Reports.ToDoMvcReport.test.Error("Error " + ex ,MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
+
             }
             
         }
 
         public void clickOnCompletedtTask(string task)
         {
-            //Reports.ToDoMvcReport.test.Log(Status.Info, "public void clickOnCompletedtTask()");
             CheckboxList = driver.FindElements(By.ClassName("view"));
+            IWebElement element = null;
 
 
             int size = CheckboxList.Count();
             try
             {
-                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
                 if (size == 1)
                 {
-                    IWebElement element = driver.FindElement(By.CssSelector("#todo-list > li > div > input"));
-                    if (element.Text == task)
+                    for (int i = 0; i < size; i++)
                     {
-                        element.Click();
-                        string file = Helpers.Screenshots.TakeScreenshot(driver);
-                        //break;
+
+                        element = ListTasks.ElementAt(i);
+                        //IWebElement element = driver.FindElement(By.CssSelector("#todo-list > li > div > input"));
+                        if (element.Text == task)
+                        {
+                            element.Click();
+                            string file = Helpers.Screenshots.TakeScreenshot(driver);
+
+                        }
                     }
                 }
                 else if (size > 1)
@@ -476,31 +409,30 @@ namespace _30DaysAutomationChallenge.POM
                     for (int i = 1; i <= size - 1; i++)
                     {
 
-                        IWebElement element = driver.FindElement(By.CssSelector("#todo-list > li:nth-child(" + i + ") > div > input"));
+                        //IWebElement element = driver.FindElement(By.CssSelector("#todo-list > li:nth-child(" + i + ") > div > input"));
                         if (element.Text == task)
                         {
                             element.Click();
                             string file = Helpers.Screenshots.TakeScreenshot(driver);
-                            //break;
+
                         }
 
                     }
                 }
-                Reports.ToDoMvcReport.test.Pass("Element Found");
+
             }
             catch (ElementNotVisibleException ex)
             {
-                Reports.ToDoMvcReport.test.Fail("Unable to Find the Element " + ex);
+                Console.WriteLine("Unable to Find the Element " + ex);
                 string file = Helpers.Screenshots.TakeScreenshot(driver);
-                Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
+
             }
 
             catch (Exception ex)
             {
-                Reports.ToDoMvcReport.test.Fail("Unable to Find the Element " + ex);
+                Console.WriteLine("Unable to Find the Element " + ex);
                 string file = Helpers.Screenshots.TakeScreenshot(driver);
-                Reports.ToDoMvcReport.test.Error("Error " + ex, MediaEntityBuilder.CreateScreenCaptureFromPath(file).Build());
-                //Reports.ToDoMvcReport.test.Log
+
             }
 
         }
